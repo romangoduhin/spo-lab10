@@ -1,0 +1,28 @@
+from gpio import *
+
+from time import *
+
+def main():
+		pinMode(0, IN)
+		pinMode(1, OUT)
+		pinMode(2, OUT)
+		analogRead(0);
+		while True:
+			print("Temperature now:")
+			a = analogRead(0)*200
+			b = a/1023
+			c = b-100
+			print(c);
+			if c < 20:
+				print("temperature goes up:")
+				digitalWrite(2, HIGH);
+				digitalWrite(1, LOW);
+			if c > 25:
+				print("temperature goes down:")
+				digitalWrite(1, HIGH);
+				digitalWrite(2, LOW);
+			print(c);
+			delay(1000)
+
+if __name__ == "__main__":
+	main()
